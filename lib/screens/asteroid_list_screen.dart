@@ -4,10 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:asteroid/services/favorite_indicator.dart';
 import 'asteroid_detail_screen.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
+import '/env/env.dart';
 
 void main() async {
-  await dotenv.load(fileName: ".env");
   runApp(MyApp());
 }
 
@@ -47,7 +46,7 @@ String getDateOneWeekLater() {
 
 //ウィジェットのStateを管理するクラス
 class _AsteroidListScreenState extends ConsumerState<AsteroidListScreen> {
-  final String apiKey = dotenv.env['API_KEY'] ?? '';
+  static final String apiKey = Env.key;
   List<dynamic> asteroids = [];
   bool isLoading = true;
   String cuurentDate = getCurrentDateFormatted();//today

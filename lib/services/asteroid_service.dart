@@ -1,7 +1,8 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
+import '/env/env.dart';
+
 
 
 //今日の日付を作成
@@ -20,7 +21,8 @@ String getDateOneWeekLater() {
 }
 
 class AsteroidService {
-  static final String apiKey = dotenv.env['API_KEY'] ?? '';
+  static final String apiKey = Env.key;
+  
   String currentDate = getCurrentDateFormatted();//today
   String oneWeekLater = getDateOneWeekLater();
 
